@@ -127,25 +127,13 @@ FluidUnitTest : UnitTest {
 	}
 
 	initSampleBuffers {
-		drumsBuffer = Buffer.read(
-			server,
-			File.realpath(FluidBufTransients.class.filenameSymbol).dirname.withTrailingSlash ++ "../AudioFiles/Nicol-LoopE-M.wav"
-		);
+		drumsBuffer = Buffer.read(server, FluidFilesPath("Nicol-LoopE-M.wav"));
 
-		eurorackSynthBuffer = Buffer.read(
-			server,
-			File.realpath(FluidBufTransients.class.filenameSymbol).dirname.withTrailingSlash ++ "../AudioFiles/Tremblay-AaS-SynthTwoVoices-M.wav"
-		);
+		eurorackSynthBuffer = Buffer.read(server, FluidFilesPath("Tremblay-AaS-SynthTwoVoices-M.wav"));
 
-		acousticStrumsBuffer = Buffer.read(
-			server,
-			File.realpath(FluidBufTransients.class.filenameSymbol).dirname.withTrailingSlash ++ "../AudioFiles/Tremblay-AaS-AcousticStrums-M.wav"
-		);
+		acousticStrumsBuffer = Buffer.read(server, FluidFilesPath("Tremblay-AaS-AcousticStrums-M.wav"));
 
-		stereoBuffer = Buffer.read(
-			server,
-			File.realpath(FluidBufTransients.class.filenameSymbol).dirname.withTrailingSlash ++ "../AudioFiles/Tremblay-SA-UprightPianoPedalWide.wav"
-		);
+		stereoBuffer = Buffer.read(server, FluidFilesPath("Tremblay-SA-UprightPianoPedalWide.wav"));
 
 		server.sync;
 
