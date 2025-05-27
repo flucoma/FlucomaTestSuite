@@ -152,7 +152,7 @@ TestFluidBufCompose : FluidUnitTest {
 		).wait;
 
 		result[\sr48postResize] = TestResult(smallDest.sampleRate, 48000);
-
+		result[\sr48size] = TestResult(smallDest.numFrames, 435180);
 
 		FluidBufCompose.process(
 			server,
