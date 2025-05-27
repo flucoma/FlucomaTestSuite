@@ -33,6 +33,7 @@ FluidUnitTest : UnitTest {
 	var <eurorackSynthBuffer, <drumsBuffer, <acousticStrumsBuffer;
 	var <stereoBuffer;
 	var <positiveNoiseBuffer;
+	var <otherSrBuffer;
 
 	//Per-method
 	var <completed = false;
@@ -145,6 +146,11 @@ FluidUnitTest : UnitTest {
 		stereoBuffer = Buffer.read(
 			server,
             FluidFilesPath.new("Tremblay-SA-UprightPianoPedalWide.wav")
+		);
+
+		otherSrBuffer = Buffer.read(
+			server,
+			FluidFilesPath.new("Green-Box639.wav")
 		);
 
 		server.sync;

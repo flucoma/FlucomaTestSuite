@@ -131,4 +131,35 @@ TestFluidBufCompose : FluidUnitTest {
 			result[\content] = TestResultEquals(resultArray, expectedArray, 1e-5);
 		});
 	}
+
+	test_SRs {
+		var smallDest = Buffer.alloc(server, 1);
+		var largeDest = Buffer.alloc(server, 500000);
+		server.sync;
+
+		FluidBufCompose.process(
+			server,
+			source: otherSrBuffer,
+			destination: largeDest,
+		).wait;
+
+		result[\noResizeNeeded] = TestResult(largeDest.sampleRate, server.sampleRate);
+
+		FluidBufCompose.process(
+			server,
+			source: otherSrBuffer,
+			destination: smallDest,
+		).wait;
+
+		result[\sr48postResize] = TestResult(smallDest.sampleRate, 48000);
+
+
+		FluidBufCompose.process(
+			server,
+			source: eurorackSynthBuffer,
+			destination: smallDest,
+		).wait;
+
+		result[\sr44postResize] = TestResult(smallDest.sampleRate, 44100);
+	}
 }
