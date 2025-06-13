@@ -108,7 +108,7 @@ TestFluidKDTree : FluidUnitTest {
 		var tree = FluidKDTree(server, numNeighbours: 5);
 
 		var inputBuffer = Buffer.alloc(server,2);
-		var outputBuffer = Buffer.alloc(server,10);//5 neighbours * 2D data points
+		var outputBuffer = Buffer.alloc(server,5);//5 neighbours * distance (default when no lookup)
 
 		var synth;
 
@@ -139,7 +139,7 @@ TestFluidKDTree : FluidUnitTest {
 
 		outputBuffer.loadToFloatArray(action: { | x |
 			x = x.as(Array);
-			result[\outArray] = TestResultEquals(x, [ 0.36987999081612, 0.44471049308777, 0.37921088933945, 0.46449166536331, 0.34067383408546, 0.36279657483101, 0.43512481451035, 0.33033752441406, 0.31664887070656, 0.42393130064011 ], 0.0001);
+			result[\outArray] = TestResultEquals(x, [0.053909573704004, 0.067759595811367, 0.070026360452175, 0.078016757965088, 0.08671860396862], 0.0001);
 		});
 
 		server.sync;
